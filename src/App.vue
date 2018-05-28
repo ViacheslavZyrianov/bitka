@@ -39,7 +39,6 @@
         </template>
         <template v-else>
           <button class="btn btn-attack" @click="attack" :disabled="!isAttackEnabled">Attack</button>
-          <!-- <button class="btn btn-special-attack">Special attack</button> -->
           <button class="btn btn-heal" @click="heal" :disabled="isHealDisabled">Heal</button>
           <button class="btn btn-exit" @click="exit">Exit</button>
         </template>
