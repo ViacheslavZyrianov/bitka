@@ -132,16 +132,13 @@ export default {
       });
     },
     battleLogOutput(battleLogItem) {
-      if (battleLogItem.type === 'draw')
-        return `It's draw!`;
-      else if (battleLogItem.type === 'heroAttack')
-        return `${this.heroName} attacked on ${battleLogItem.param} HP!`;
-      else if (battleLogItem.type === 'enemyAttack')
-        return `Enemy attacked on ${battleLogItem.param} HP!`;
-      else if (battleLogItem.type === 'heal')
-        return `${this.heroName} healed on ${battleLogItem.param} HP!`;
-      else if (battleLogItem.type === 'finish')
-        return `${battleLogItem.param} wins!`;
+      switch (battleLogItem.type) {
+        case 'draw': return `It's draw!`;
+        case 'heroAttack': return `${this.heroName} attacked on ${battleLogItem.param} HP!`;
+        case 'enemyAttack': return `Enemy attacked on ${battleLogItem.param} HP!`;
+        case 'heal': return `${this.heroName} healed on ${battleLogItem.param} HP!`;
+        case 'finish': return `${battleLogItem.param} wins!`;
+      }
     }
   },
   mounted () {
@@ -159,15 +156,10 @@ export default {
   },
   watch: {
     heroHP () {
-      if (this.heroHP < 0) {
-        this.finish('Enemy');
-      }
-      else this.isHealDisabled = this.heroHP >= 100;
+      this.heroHP <= 0 ? this.finish('Enemy') : this.isHealDisabled = this.heroHP >= 100
     },
     enemyHP () {
-      if (this.enemyHP < 0) {
-        this.finish(this.heroName);
-      }
+      if (this.enemyHP <= 0) this.finish(this.heroName);
     }
   }
 };
