@@ -151,12 +151,6 @@ export default {
   computed: {
     heroHealedOn () {
       const healOn = random(1,10);
-      // const leftToHeal = 100 - this.heroHP
-      // if (healOn >= leftToHeal) {
-      //   return leftToHeal
-      // } else {
-      //   return healOn
-      // }
       return healOn >= 100 - this.heroHP ? 100 - this.heroHP : healOn;
     },
     isBtnStartDisabled () {
@@ -167,15 +161,12 @@ export default {
     heroHP () {
       if (this.heroHP < 0) {
         this.finish('Enemy');
-        // this.heroHP = 0;
       }
       else this.isHealDisabled = this.heroHP >= 100;
     },
     enemyHP () {
-      console.log(this.enemyHP);
       if (this.enemyHP < 0) {
         this.finish(this.heroName);
-        // this.enemyHP = 0;
       }
     }
   }
