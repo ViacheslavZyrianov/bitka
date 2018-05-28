@@ -80,6 +80,7 @@ export default {
   },
   methods: {
     startGame () {
+      this.clearData();
       this.state = 'game';
       this.heroPic = `src/img/players/${random(0, 95)}.svg`;
       this.enemyPic = `src/img/players/${random(0, 95)}.svg`;
@@ -92,7 +93,6 @@ export default {
     },
     exit () {
       this.state = 'start';
-      this.clearData();
     },
     clearData () {
       this.battleLog = [];
