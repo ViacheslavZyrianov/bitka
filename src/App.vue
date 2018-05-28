@@ -141,10 +141,6 @@ export default {
       }
     }
   },
-  mounted () {
-    this.heroName = 'Slavique';
-    this.startGame();
-  },
   computed: {
     heroHealedOn () {
       const healOn = random(1,10);
