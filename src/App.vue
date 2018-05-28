@@ -9,7 +9,7 @@
       <button
         :disabled="isBtnStartDisabled"
         class="btn btn-start"
-        @click="startGame"
+        @click="start"
         >Start
       </button>
     </template>
@@ -79,7 +79,7 @@ export default {
     };
   },
   methods: {
-    startGame () {
+    start () {
       this.clearData();
       this.state = 'game';
       this.heroPic = `src/img/players/${random(0, 95)}.svg`;
@@ -89,9 +89,10 @@ export default {
     },
     restart () {
       this.clearData();
-      this.startGame();
+      this.start();
     },
     exit () {
+      this.heroName = '';
       this.state = 'start';
     },
     clearData () {
