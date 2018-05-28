@@ -88,11 +88,7 @@ export default {
     },
     restart () {
       this.clearData();
-      this.state = 'game';
-      this.heroPic = `src/img/players/${random(0, 95)}.svg`;
-      this.enemyPic = `src/img/players/${random(0, 95)}.svg`;
-      this.heroHP = 100;
-      this.enemyHP = 100;
+      this.startGame();
     },
     exit () {
       this.state = 'start';
